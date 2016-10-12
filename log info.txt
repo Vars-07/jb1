@@ -1,0 +1,20 @@
+Battery recharge   0#$money
+$money=money remaining after baatery is charged.
+
+
+Package Purchasing
+1#package_id#exp#money
+here money is that which is left after subtracting total of cost of all product purchased from total money available to user.
+so money inserted in the db is same for all products purchased simultaneously.
+
+
+Project apply:-
+2#pid#level#exp#money
+
+Project completion;
+3#pid#level#exp#money#battery
+battery =finally the battery left after task is completed
+
+
+
+

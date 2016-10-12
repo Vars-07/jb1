@@ -22,7 +22,7 @@ class Database
     //private $db_pass = 'LetsDoSomeJobs';          // Password
     private $db_host = 'localhost';     // Database Host
     private $db_user = 'root';          // Username
-    private $db_pass = '';          // Password
+    private $db_pass = 'Iiahtth';          // Password
     private $db_name = 'jobbureau';          // Database
     /*
      * End edit

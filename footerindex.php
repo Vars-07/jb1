@@ -14,10 +14,10 @@
             </div>
             <div class="footer_list">
                 <ul>
-                    <li><a href="#">Keshav Singhal</a></li>
-                    <li><a href="#">+91-9424909992</a></li>
-                    <li><a href="#">Ashish Pandey</a></li>
-                    <li><a href="#">+91-9479322866</a></li>
+                    <li><a href="#">Shubham Varshney</a></li>
+                    <li><a href="#">+91-9458814904</a></li>
+                    <li><a href="#">Anshul Jain</a></li>
+                    <li><a href="#">+91-7898135525</a></li>
                     
                 </ul>
                 <div class="footer_list_divider"></div>
@@ -61,8 +61,8 @@
 	
 				<ul>
 					<li>Developers :</li>
-                    <li><a href="#"><h3>Keshav Singhal</h3></a></li>
-                    <li><a href="#"><h3>Ashish Pandey</h3></a></li>
+                    <li><a href="#"><h3>Shubham Varshney</h3></a></li>
+                    <li><a href="#"><h3>Anshul Jain</h3></a></li>
                     
                 </ul>
 			</div>

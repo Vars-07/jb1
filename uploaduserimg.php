@@ -107,7 +107,7 @@ else {
     $db_host = 'localhost';
     $db_infotsav = 'jobbureau';
     $db_user = 'root';
-    $db_pass = '';
+    $db_pass = 'Iiahtth';
     $nick = $_POST['nick'];
 
     try{

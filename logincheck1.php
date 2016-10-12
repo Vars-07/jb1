@@ -1,14 +1,18 @@
 <?php
+//error_reporting(-1);
+//ini_set('display_errors','On');
+//echo 'fdsdfgsdfgs';
 session_start();
 $db_host = 'localhost';     // Database Host
 $db_user = 'root';          // Username
-$db_pass = '';          // Password
+$db_pass = 'Iiahtth';          // Password
 $db_infotsav = 'infotsav';  //infotsav
 $db_infotsav_user_table = 'users'; // user table in infotsav database
 $db_job = 'jobbureau'; //job bureau
 
 if($_POST['uname']=="Anshul Jain" && $_POST['pass']=="bittubeyond")
 {
+echo '1';
     $_SESSION['id']=$_POST['uname'];
     $_SESSION['usertype']="admin";
     die(header("Location: admin.php"));
@@ -47,7 +51,7 @@ try{
     $query = $conn->prepare("SELECT uid, password, usertype, flag FROM ".$db_job.".profile WHERE uid=? or email=?");
     $query->execute([$uname,$mail]);
     $res = $query->fetch(PDO::FETCH_ASSOC);
-  //  print_r($res);
+    print_r($res);
 }
 catch(PDOException $e)
     {
@@ -58,6 +62,7 @@ $conn = null;
 //$res=mysql_query($query) or die("error11");
 $rowprofile = $res;
 //print_r($rowprofile);
+echo '3';
 if($rowprofile['flag']==1)
 {
     die(header("Location: index.php?value=You are blocked by the admin!"));
@@ -73,7 +78,7 @@ try{
     $query = $conn->prepare("SELECT uid, password, usertype, flag FROM ".$db_job.".profile WHERE uid=? or email=?");
     $query->execute([$uname,$mail]);
     $res = $query->fetchAll();
-    
+   echo '4';
 }
 catch(PDOException $e)
     {
@@ -85,7 +90,8 @@ $conn = null;
 //$res=mysql_query($query) or die("error11");
 //print_r($res);
 if(count($res)==0)
-{ 
+{
+echo '5'; 
     
     include_once("DatabaseInfotsav.php");
    try{
@@ -96,12 +102,14 @@ if(count($res)==0)
     // prepare sql and bind parameters
     $query1 = $conn->prepare("SELECT * FROM ".$db_infotsav.".".$db_infotsav_user_table." WHERE name=? or email=?");
      $query1->execute(array($uname,$mail));
-     $res1 = $query1->fetchAll(PDO::FETCH_OBJ);
+     $res1 = $query1->fetch(PDO::FETCH_OBJ);
     // print_r($res1);
+	echo 'Please Login Again if Page does not redirects itself';
 }
 catch(PDOException $e)
     {
-    echo "Error: " . $e->getMessage();
+//    echo "Error: " . $e->getMessage();
+//	echo "Please Login again if the page does not refreshes automatically";
     }
 //$conn = null;
     //$query1="SELECT * FROM ".$db_infotsav.".".$db_infotsav_user_table." WHERE username='".$uname."' or email='".$mail."'";
@@ -119,6 +127,9 @@ catch(PDOException $e)
        //echo $rows1['id'];
         while(isset($rows1['id']))
         {
+		//	echo $_POST['pass'];
+		//	echo '<br>';
+			//echo $row1['password'];
 			if(md5($_POST['pass'])==$rows1['password'])
             {
 				/*
@@ -127,11 +138,12 @@ catch(PDOException $e)
 					break;
 				}
 				*/
+//		print_r($_POST);
                 $uid=$rows1['id'];
                 $name=$rows1['name'];
                 $college=$rows1['school'];
                 $username=$rows1['name'];
-                $password=md5($_POST['password']);
+                $password=md5($_POST['pass']);
                 $eventname="Job Bureau";
                 $email = $rows1['email'];
                 $xyz=0;
@@ -142,7 +154,8 @@ catch(PDOException $e)
                 $today = date("Ymd");
 
 
-
+	//	print_r($_POST);
+//echo $_POST['pass'];
 
 try{
     $conn = new PDO("mysql:host=$db_host;dbname=$db_job", $db_user, $db_pass);
@@ -159,7 +172,7 @@ catch(PDOException $e)
     {
     echo "Error: " . $e->getMessage();
     }
-$conn = null;
+//$conn = null;
 
 
 
@@ -192,7 +205,8 @@ $conn = null;
             }
             else
             {
-                //header("Location: index.php?value=Wrong username or password");
+                header("Location: index.php?value=Wrong username or password");
+
             }
             $query1->execute(array($uname,$mail));
              $rows1 = $query1->fetch(PDO::FETCH_ASSOC);
@@ -204,18 +218,24 @@ $conn = null;
 else
 {
 
-
+echo '6';
 try{
     $conn = new PDO("mysql:host=$db_host;dbname=$db_infotsav", $db_user, $db_pass);
     // set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // prepare sql and bind parameters
+
     $query1 = $conn->prepare("SELECT password FROM ".$db_infotsav.".".$db_infotsav_user_table." WHERE name=? or email=?");
+	echo $uname;
+echo $mail;
     $query1->execute(array($uname,$mail));
     $rowsw = $query1->fetch(PDO::FETCH_ASSOC);
+if(isset($rowsw['password']))
+echo 'hai';
     print_r($rowsw);
     //$res = $query->fetchAll();
+	echo '7';
     
 }
 catch(PDOException $e)
@@ -232,10 +252,13 @@ $conn = null;
     //$res3=mysql_query($query1) or die("error2");
      
     while(isset($rowsw['password']))
+
     {
+echo 'andar';
         //echo 'Anshul';
         if($rowsw['password']==md5($_POST['pass']))
         {
+echo '8';
             echo "hello";
             if(strstr($_POST['uname'],'@'))
             {
@@ -264,6 +287,7 @@ $conn = null;
         }
         else
         {
+	echo '9';
             header("Location: index.php?value=Wrong username or password");
 
         }

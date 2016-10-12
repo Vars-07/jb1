@@ -10,7 +10,7 @@ Class ActionLog{
        $servername='localhost';
        $dbname="jobbureau";
        $username='root';
-       $password="";
+       $password="Iiahtth";
      try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     // set the PDO error mode to exception
@@ -92,7 +92,7 @@ $conn = null;
        $servername='localhost';
        $dbname="jobbureau";
        $username='root';
-       $password="";
+       $password="Iahtth";
 
 
         //$query="INSERT INTO action_log VALUES('".$uid."',1,'".$pacid."','".$info."','I purchased a package from offer of the day -> \"$pacname\"',NOW())";
@@ -121,7 +121,7 @@ $conn = null;
           $servername='localhost';
        $dbname="jobbureau";
        $username='root';
-       $password="";
+       $password="Iiahtth";
 
         
 
@@ -176,7 +176,7 @@ function add_actiontasklevel3($uid, $pid)
           $servername='localhost';
        $dbname="jobbureau";
        $username='root';
-       $password="";
+       $password="Iiahtth";
 
 
         $query1="select p.name,c.company_name from projects p,company c where p.cid=c.cid and pid=".$pid."";

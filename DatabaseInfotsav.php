@@ -12,7 +12,7 @@
  */
 $db_infotsav = 'infotsav';  //infotsav
 $db_user = 'root'; 			//username
-$db_pass = '';          // Password
+$db_pass = 'Iiahtth';          // Password
 $db_host = 'localhost';
 mysql_connect($db_host,$db_user,$db_pass) or die("Error connecting to server conn1");
 mysql_select_db($db_infotsav) or die("Error connecting to database infotsav");
